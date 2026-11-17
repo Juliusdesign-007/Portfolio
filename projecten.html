@@ -8,20 +8,21 @@
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
   <!-- ============ NAVIGATIE (zelfde op elke pagina) ============ -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="nav__logo" href="index.html">Julius Akyol</a>
     <nav aria-label="Hoofdmenu">
       <ul class="nav__links">
         <li><a href="over-mij.html">Over mij</a></li>
         <li><a href="projecten.html" aria-current="page">Projecten</a></li>
-        <li><a href="index.html#ervaring">Ervaring</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li class="hide-mobile"><a href="index.html#ervaring">Ervaring</a></li>
+        <li><a class="btn btn--light" href="index.html#contact" aria-label="Contact"><span class="btn__label">Contact</span> <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
       </ul>
     </nav>
   </header>
@@ -30,10 +31,10 @@
 
     <!-- ============ PAGINAKOP ============ -->
     <section class="page-head">
-      <div class="page-head__band" aria-hidden="true"></div>
-      <div class="wrap page-head__inner">
-        <h1>Projecten</h1>
-        <p>Een selectie van wat ik heb ontworpen, op school, tijdens mijn stage en voor mezelf.</p>
+      <div class="page-head__inner">
+        <p class="eyebrow anim-up" style="--d:100">Mijn werk</p>
+        <h1 class="anim-up" style="--d:200">Projecten</h1>
+        <p class="anim-up" style="--d:380">Een selectie van wat ik heb ontworpen, op school, tijdens mijn stage en voor mezelf.</p>
       </div>
     </section>
 
@@ -43,10 +44,11 @@
         <div class="projects">
           <!--
             PROJECT TOEVOEGEN: kopieer dit blok, haal de commentaartekens weg en vul in.
-            Zet de afbeelding in img/projecten/ (liefst .jpg of .webp, ca. 1600px breed).
-            Verwijder de 'projects__empty' blok zodra er een echt project staat.
+            Zet de afbeelding in img/projecten/ (liefst .jpg of .webp, ca. 1600px breed, staand 4:5 werkt het mooist).
+            Geef elk volgend project een oplopende vertraging: style="--d:0", "--d:100", "--d:200" …
+            Verwijder het 'projects__empty' blok zodra er een echt project staat.
 
-          <article class="project">
+          <article class="project" data-reveal style="--d:0">
             <img class="project__img" src="img/projecten/NAAM.jpg" alt="Korte beschrijving van het beeld" loading="lazy">
             <div class="project__body">
               <h2>Projecttitel</h2>
@@ -56,10 +58,10 @@
           </article>
           -->
 
-          <div class="projects__empty">
+          <div class="projects__empty" data-reveal>
             <h2>Hier komt binnenkort mijn werk te staan.</h2>
             <p>Ik ben mijn projecten aan het verzamelen. Wil je nu al iets zien? Mail me, dan stuur ik je een paar voorbeelden.</p>
-            <a class="btn btn--dark" href="mailto:julius.akyol@gmail.com">Mail mij</a>
+            <a class="btn btn--blue" href="mailto:julius.akyol@gmail.com">Mail mij <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
           </div>
         </div>
       </div>

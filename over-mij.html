@@ -8,20 +8,21 @@
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
   <!-- ============ NAVIGATIE (zelfde op elke pagina) ============ -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="nav__logo" href="index.html">Julius Akyol</a>
     <nav aria-label="Hoofdmenu">
       <ul class="nav__links">
         <li><a href="over-mij.html" aria-current="page">Over mij</a></li>
         <li><a href="projecten.html">Projecten</a></li>
-        <li><a href="index.html#ervaring">Ervaring</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li class="hide-mobile"><a href="index.html#ervaring">Ervaring</a></li>
+        <li><a class="btn btn--light" href="index.html#contact" aria-label="Contact"><span class="btn__label">Contact</span> <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
       </ul>
     </nav>
   </header>
@@ -30,26 +31,26 @@
 
     <!-- ============ PAGINAKOP ============ -->
     <section class="page-head">
-      <div class="page-head__band" aria-hidden="true"></div>
-      <div class="wrap page-head__inner">
-        <h1>Over mij</h1>
-        <p>Ik ben Julius, <span id="age">19</span> jaar, uit Enschede. Leergierig, creatief en altijd bezig om mezelf verder te ontwikkelen.</p>
+      <img class="page-head__photo anim-photo" src="img/julius-cut.webp" alt="" width="904" height="904">
+      <div class="page-head__inner">
+        <p class="eyebrow anim-up" style="--d:100">Over mij</p>
+        <h1 class="anim-up" style="--d:200">Hoi, ik ben Julius.</h1>
+        <p class="anim-up" style="--d:380"><span id="age">19</span> jaar, uit Enschede. Leergierig, creatief en altijd bezig om mezelf verder te ontwikkelen.</p>
       </div>
     </section>
 
     <!-- ============ OVER MIJ ============ -->
     <section class="section">
       <div class="wrap about">
-        <div class="about__main">
-          <img class="about__photo" src="img/julius.jpg" alt="Portretfoto van Julius Akyol" width="452" height="452">
+        <div class="about__main" data-reveal>
           <p class="lead">Ik zit in mijn laatste jaar Media Vormgeving aan ROC van Twente, met een sterke interesse in grafisch ontwerp en visuele communicatie.</p>
           <p>Tijdens mijn stage bij Stepp Footcare ontwierp ik allerlei communicatiemiddelen en deed ik professionele beeldbewerking in Photoshop. Daar merkte ik hoe leuk het is om voor een echte opdrachtgever te werken: iets maken dat daarna ook echt gebruikt wordt.</p>
           <p>Naast school werk ik als Shop Advisor bij Odido. Daar leer ik elke dag hoe je goed communiceert met mensen en wat ze écht nodig hebben, en dat neem ik mee in mijn ontwerpen. Ik neem graag initiatief, werk zelfstandig maar net zo goed in een team, en sta open voor nieuwe ideeën.</p>
           <p>Buiten werk en school sport ik veel: basketbal, voetbal en de gym. En ik maak graag foto's.</p>
-          <a class="btn btn--dark" href="index.html#contact">Neem contact op</a>
+          <a class="btn btn--blue" href="index.html#contact">Neem contact op <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
         </div>
 
-        <aside class="about__side">
+        <aside class="about__side" data-reveal style="--d:150">
           <div class="fact">
             <h2>Vaardigheden</h2>
             <ul>

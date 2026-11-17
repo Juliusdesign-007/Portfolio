@@ -20,11 +20,16 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 - `img/julius.jpg` – profielfoto (uit zijn CV). `img/favicon.svg` – icoon.
 - `img/projecten/` – hier komen projectafbeeldingen.
 
-## Stijl (afgeleid van zijn CV)
-- Donker navy `#10131f` + elektrisch blauw verloop (`--band`), schuine banden zoals de CV-kop.
-- Sectiekoppen als blauw tabblad met schuine punt (`.tab`); subpagina's hebben een `.page-head` met schuine band.
-- Ervaring is bewust NIET als CV-tijdlijn vormgegeven (Julius' wens): lijst met grote jaartallen + label (Werk/Stage/Opleiding), class `.xp`.
-- Font: Outfit (Google Fonts). Strak en rustig houden: Julius wil het strak.
+## Stijl (sinds 17-11-2026: donkere 'portfolio-vibe', op basis van een voorbeeld dat Julius stuurde)
+- Donkere achtergrond `--bg #0d0e12`, vlakken `--surface`. Accent: elektrisch blauw uit zijn CV (niet oranje zoals het voorbeeld).
+- Grote afgeronde headers (`.hero` op de homepage, `.page-head` op subpagina's, radius 40px) met blauw verloop `--hero-grad`.
+- Foto in de header: `img/julius-cut.webp` = zwart-wit uitsnede zonder achtergrond, krijgt kleur via `mix-blend-mode: luminosity`.
+- Font: Plus Jakarta Sans (Google Fonts), heel vet (800) voor grote titels. Kleine blauwe `.eyebrow` boven titels.
+- Knoppen: pil met rond pijltje (`.btn` + `.btn__icon`, varianten `--light`, `--blue`, `--ghost`).
+- Menu (`#nav`): groot bovenin, wordt bij scrollen een kleiner zwevend balkje (`.nav--small`, gezet in main.js). Op mobiel toont de Contact-knop alleen het pijltje.
+- Ervaring: lijst met grote jaartallen + label (Werk/Stage/Opleiding), class `.xp`. NIET als CV-tijdlijn.
+- Animaties: openingsanimatie header (`.anim-up` / `.anim-photo` met `--d` vertraging in ms), scroll-animaties via `data-reveal` (+ optioneel `style="--d:100"`), lichte parallax op headerfoto (`data-parallax`). Alles uit bij 'prefers-reduced-motion'.
+- Nieuwe content? Geef het `data-reveal` zodat het meedoet met de animaties.
 
 ## Projecten toevoegen
 In `projecten.html` onder PROJECTEN staat een uitgecommentarieerd sjabloon (`<article class="project">`).

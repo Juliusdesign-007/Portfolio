@@ -11,76 +11,92 @@
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
   <!-- ============ NAVIGATIE (zelfde op elke pagina) ============ -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="nav__logo" href="index.html">Julius Akyol</a>
     <nav aria-label="Hoofdmenu">
       <ul class="nav__links">
         <li><a href="over-mij.html">Over mij</a></li>
         <li><a href="projecten.html">Projecten</a></li>
-        <li><a href="index.html#ervaring">Ervaring</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li class="hide-mobile"><a href="index.html#ervaring">Ervaring</a></li>
+        <li><a class="btn btn--light" href="index.html#contact" aria-label="Contact"><span class="btn__label">Contact</span> <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
       </ul>
     </nav>
   </header>
 
   <main id="top">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero__band" aria-hidden="true"></div>
-      <div class="hero__inner">
-        <div class="hero__text">
-          <h1 class="hero__name">Julius<br>Akyol</h1>
-          <p class="hero__role">Mediavormgever</p>
-          <p class="hero__intro">Student Media Vormgeving (leerjaar 4) aan ROC van Twente. Ik ontwerp grafische communicatie en bewerk beeld tot het klopt.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="projecten.html">Bekijk mijn werk</a>
-            <a class="btn btn--ghost" href="#contact">Neem contact op</a>
+    <!-- ============ GROTE HEADER ============ -->
+    <div class="top">
+      <section class="hero">
+        <img class="hero__photo anim-photo" data-parallax src="img/julius-cut.webp" alt="" width="904" height="904">
+
+        <div class="hero__main">
+          <div>
+            <p class="hero__hello anim-up" style="--d:100">Hoi, ik ben Julius</p>
+            <h1 class="hero__title">
+              <span class="line anim-up" style="--d:200">Media-</span>
+              <span class="line anim-up" style="--d:320">vormgever</span>
+            </h1>
+          </div>
+
+          <div class="hero__side anim-up" style="--d:550">
+            <h2>Ontwerp moet niet opvallen. Het moet werken.</h2>
+            <p>Student Media Vormgeving (leerjaar 4) aan ROC van Twente. Van flyer tot social post: ik maak beeld dat klopt.</p>
+            <a class="btn btn--light" href="projecten.html">Bekijk mijn werk <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
           </div>
         </div>
-        <img class="hero__photo" src="img/julius.jpg" alt="Portretfoto van Julius Akyol" width="452" height="452">
-      </div>
-    </section>
 
-    <!-- ============ WAT IK DOE ============ -->
-    <section class="section">
-      <div class="wrap">
-        <div class="intro">
-          <h2 class="intro__title">Ontwerpen die iets duidelijk maken.</h2>
-          <p>Ik ben Julius uit Enschede: leergierig, creatief en altijd bezig om beter te worden. Door mijn werk in de winkel weet ik hoe belangrijk het is dat een boodschap meteen overkomt, en dat neem ik mee in alles wat ik ontwerp.</p>
-          <a class="link-more" href="over-mij.html">Meer over mij</a>
-        </div>
-
-        <ul class="skills">
-          <li class="skill">
-            <h3>Grafisch ontwerp</h3>
-            <p>Communicatiemiddelen voor print en online: van flyer tot social post, in de huisstijl van de opdrachtgever.</p>
-          </li>
-          <li class="skill">
-            <h3>Beeldbewerking</h3>
-            <p>Productfoto's en beelden professioneel bewerken in Photoshop, zodat ze klaar zijn voor gebruik.</p>
-          </li>
-          <li class="skill">
-            <h3>Fotografie</h3>
-            <p>Ik fotografeer graag zelf. Een goed eigen beeld is vaak het sterkste begin van een ontwerp.</p>
-          </li>
+        <ul class="hero__services">
+          <li class="anim-up" style="--d:700"><span>#01</span>Grafisch ontwerp</li>
+          <li class="anim-up" style="--d:780"><span>#02</span>Beeldbewerking</li>
+          <li class="anim-up" style="--d:860"><span>#03</span>Fotografie</li>
         </ul>
+      </section>
+
+      <!-- Strook: waar ik ervaring heb opgedaan -->
+      <div class="brands">
+        <p class="brands__label">Ervaring opgedaan bij</p>
+        <ul>
+          <li>Odido</li>
+          <li>Stepp Footcare</li>
+          <li>Jumbo</li>
+          <li>T-Mobile</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ WIE IK BEN ============ -->
+    <section class="section">
+      <div class="wrap intro">
+        <div data-reveal>
+          <p class="eyebrow">Wie ik ben</p>
+          <h2 class="section__title">Ontwerpen die iets duidelijk maken.</h2>
+        </div>
+        <div data-reveal style="--d:150">
+          <p class="intro__lead">Ik ben Julius uit Enschede: leergierig, creatief en altijd bezig om beter te worden.</p>
+          <p class="intro__text">Door mijn werk in de winkel weet ik hoe belangrijk het is dat een boodschap meteen overkomt. Dat neem ik mee in alles wat ik ontwerp.</p>
+          <a class="btn btn--blue" href="over-mij.html">Meer over mij <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        </div>
       </div>
     </section>
 
     <!-- ============ ERVARING ============ -->
-    <section class="section section--tint" id="ervaring">
+    <section class="section" id="ervaring">
       <div class="wrap">
-        <h2 class="tab">Ervaring</h2>
+        <div class="xp-head" data-reveal>
+          <p class="eyebrow">Waar ik heb gewerkt en geleerd</p>
+          <h2 class="section__title">Ervaring</h2>
+        </div>
 
         <ul class="xp">
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:0">
             <p class="xp__years">2026 – nu</p>
             <div class="xp__body">
               <h3>Shop Advisor</h3>
@@ -89,7 +105,7 @@
             </div>
             <span class="xp__type">Werk</span>
           </li>
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:70">
             <p class="xp__years">2025 – 2026</p>
             <div class="xp__body">
               <h3>Stagiair vormgeving</h3>
@@ -98,7 +114,7 @@
             </div>
             <span class="xp__type xp__type--hl">Stage</span>
           </li>
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:140">
             <p class="xp__years">2023 – nu</p>
             <div class="xp__body">
               <h3>MBO Media Vormgeving</h3>
@@ -107,7 +123,7 @@
             </div>
             <span class="xp__type">Opleiding</span>
           </li>
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:210">
             <p class="xp__years">2023 – 2025</p>
             <div class="xp__body">
               <h3>Medewerker</h3>
@@ -116,7 +132,7 @@
             </div>
             <span class="xp__type">Werk</span>
           </li>
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:280">
             <p class="xp__years">2022</p>
             <div class="xp__body">
               <h3>Stagiair</h3>
@@ -125,7 +141,7 @@
             </div>
             <span class="xp__type">Stage</span>
           </li>
-          <li class="xp__item">
+          <li class="xp__item" data-reveal style="--d:350">
             <p class="xp__years">2019 – 2023</p>
             <div class="xp__body">
               <h3>MAVO</h3>
@@ -140,12 +156,12 @@
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact">
       <div class="wrap">
-        <h2 class="contact__title">Zin om samen te werken?</h2>
-        <p class="contact__text">Voor een stageplek, opdracht of gewoon een vraag: stuur me een bericht.</p>
+        <h2 class="contact__title" data-reveal>Zin om samen te werken?</h2>
+        <p class="contact__text" data-reveal style="--d:100">Voor een stageplek, opdracht of gewoon een vraag: stuur me een bericht.</p>
         <ul class="contact__list">
-          <li><a href="mailto:julius.akyol@gmail.com"><span>E-mail</span>julius.akyol@gmail.com</a></li>
-          <li><a href="https://www.linkedin.com/in/juliusakyol/" target="_blank" rel="noopener"><span>LinkedIn</span>in/juliusakyol</a></li>
-          <li><a href="https://www.instagram.com/juliusa_053/" target="_blank" rel="noopener"><span>Instagram</span>@juliusa_053</a></li>
+          <li data-reveal style="--d:150"><a href="mailto:julius.akyol@gmail.com"><span>E-mail</span>julius.akyol@gmail.com</a></li>
+          <li data-reveal style="--d:230"><a href="https://www.linkedin.com/in/juliusakyol/" target="_blank" rel="noopener"><span>LinkedIn</span>in/juliusakyol</a></li>
+          <li data-reveal style="--d:310"><a href="https://www.instagram.com/juliusa_053/" target="_blank" rel="noopener"><span>Instagram</span>@juliusa_053</a></li>
         </ul>
       </div>
     </section>
