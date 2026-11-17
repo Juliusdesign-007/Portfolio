@@ -340,10 +340,22 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   padding: 1.75rem 1rem;
   border-bottom: 1px solid var(--line);
   border-radius: 16px;
-  transition: background-color 0.3s;
+  transition:
+    translate 0.45s var(--ease), scale 0.45s var(--ease),
+    background-color 0.3s, box-shadow 0.45s var(--ease), border-color 0.3s;
 }
 
-.xp__item:hover { background: var(--surface); }
+.xp__item { position: relative; }
+
+/* Hover: de regel komt iets naar voren */
+.xp__item:hover {
+  z-index: 2;
+  translate: 0 -4px;
+  scale: 1.015;
+  background: var(--surface-2);
+  border-bottom-color: transparent;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
 
 .xp__years {
   margin: 0;
@@ -905,6 +917,15 @@ body::after  { bottom: -30vmax; right: -25vmax; background: radial-gradient(circ
   }
 
   .js [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  /* Ervaring-regels: verschijn-animatie mét vertraging, hover-effect zonder */
+  .js .xp__item[data-reveal] {
+    transition:
+      opacity 0.9s var(--ease) calc(var(--d, 0) * 1ms),
+      transform 0.9s var(--ease) calc(var(--d, 0) * 1ms),
+      translate 0.45s var(--ease), scale 0.45s var(--ease),
+      background-color 0.3s, box-shadow 0.45s var(--ease), border-color 0.3s;
+  }
 }
 
 @keyframes up {
