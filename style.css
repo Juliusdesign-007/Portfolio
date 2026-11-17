@@ -213,7 +213,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   padding: clamp(7rem, 14vh, 9rem) clamp(1.25rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 2.75rem);
 }
 
-/* Foto: donker silhouet met blauw randlicht (zoals de schaduw in het voorbeeld) */
+/* Foto: zwart-wit uitsnede die de blauwe kleur van de header overneemt */
 .hero__photo {
   position: absolute;
   z-index: -1;
@@ -223,6 +223,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   height: 94%;
   width: auto;
   max-width: none;
+  mix-blend-mode: luminosity;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
@@ -512,6 +513,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   height: 92%;
   width: auto;
   max-width: none;
+  mix-blend-mode: luminosity;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
 }
