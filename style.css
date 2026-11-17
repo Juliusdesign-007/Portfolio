@@ -134,14 +134,12 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   text-decoration: none;
   font-weight: 500;
   font-size: 0.98rem;
+  transition: color 0.25s;
 }
 
-.nav__links a:hover { color: #fff; }
-
-.nav__links a[aria-current="page"] {
-  color: #fff;
-  box-shadow: inset 0 -2px 0 var(--blue-bright);
-}
+/* Alle menu-items dezelfde stijl; bij hover kleuren ze blauw */
+.nav__links a:hover,
+.nav__links a:focus-visible { color: var(--blue-bright); }
 
 .nav--small .nav__links { gap: 1.5rem; }
 .nav--small .nav__links a { font-size: 0.92rem; }
@@ -175,7 +173,9 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
 .btn:hover .btn__icon { transform: rotate(-45deg); }
 
 .btn--light { background: #fff; color: #0d0e12; }
-.btn--light .btn__icon { background: var(--blue); color: #fff; }
+.btn--light .btn__icon { background: var(--blue); color: #fff; transition: transform 0.35s var(--ease), background-color 0.25s, color 0.25s; }
+.btn--light:hover { background: var(--blue); color: #fff; }
+.btn--light:hover .btn__icon { background: #fff; color: var(--blue); }
 
 .btn--blue { background: var(--blue); color: #fff; }
 .btn--blue .btn__icon { background: #fff; color: var(--blue); }
@@ -690,4 +690,5 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
 }
 
 /* knop in het menu houdt zijn eigen kleur */
-.nav__links a.btn { color: #0d0e12; box-shadow: none; }
+.nav__links a.btn { color: #0d0e12; }
+.nav__links a.btn:hover { color: #fff; }

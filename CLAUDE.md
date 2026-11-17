@@ -26,7 +26,7 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 - Foto in de header: `img/julius-cut.webp` = zwart-wit uitsnede zonder achtergrond, krijgt kleur via `mix-blend-mode: luminosity`.
 - Font: Plus Jakarta Sans (Google Fonts), heel vet (800) voor grote titels. Kleine blauwe `.eyebrow` boven titels.
 - Knoppen: pil met rond pijltje (`.btn` + `.btn__icon`, varianten `--light`, `--blue`, `--ghost`).
-- Menu (`#nav`): groot bovenin, wordt bij scrollen een kleiner zwevend balkje (`.nav--small`, gezet in main.js). Op mobiel toont de Contact-knop alleen het pijltje.
+- Menu (`#nav`): groot bovenin, wordt bij scrollen een kleiner zwevend balkje (`.nav--small`, gezet in main.js). Op mobiel toont de Contact-knop alleen het pijltje. Menu-items hebben allemaal dezelfde stijl (ook de huidige pagina, geen onderstreping); bij hover worden ze blauw.
 - Ervaring: lijst met grote jaartallen + label (Werk/Stage/Opleiding), class `.xp`. NIET als CV-tijdlijn.
 - Animaties: openingsanimatie header (`.anim-up` / `.anim-photo` met `--d` vertraging in ms), scroll-animaties via `data-reveal` (+ optioneel `style="--d:100"`), lichte parallax op headerfoto (`data-parallax`). Alles uit bij 'prefers-reduced-motion'.
 - Nieuwe content? Geef het `data-reveal` zodat het meedoet met de animaties.
