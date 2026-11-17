@@ -13,9 +13,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Laadscherm: alleen bij de eerste keer openen (per bezoek), niet bij elke pagina
+    try {
+      if (!sessionStorage.getItem('ja-loaded') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('is-loading');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
+
+  <!-- ============ LAADSCHERM (eerste bezoek) ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <p class="loader__name"><span>Julius</span> <span>Akyol</span></p>
+      <p class="loader__role">Mediavormgever</p>
+      <div class="loader__bar"><i id="loader-bar"></i></div>
+      <p class="loader__count"><span id="loader-count">0</span>%</p>
+    </div>
+  </div>
 
   <!-- ============ NAVIGATIE (zelfde op elke pagina) ============ -->
   <header class="nav" id="nav">

@@ -780,6 +780,105 @@ body::after  { bottom: -30vmax; right: -25vmax; background: radial-gradient(circ
 }
 
 /* =========================================================
+   LAADSCHERM
+   Zichtbaar zolang <html> de class 'is-loading' heeft (alleen
+   eerste bezoek). Schuift daarna omhoog weg.
+   ========================================================= */
+.loader { display: none; }
+
+.is-loading .loader,
+.loader.is-leaving {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.is-loading,
+.is-loading body { overflow: hidden; }
+
+/* zachte blauwe gloed, net als in de headers */
+.loader::before {
+  content: "";
+  position: absolute;
+  width: 80vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 143, 255, 0.22) 0%, rgba(10, 58, 115, 0.12) 35%, transparent 65%);
+  animation: glow 6s ease-in-out infinite alternate;
+}
+
+.loader.is-leaving {
+  transform: translateY(-100%);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  transition: transform 0.9s var(--ease), border-radius 0.9s var(--ease);
+}
+
+.loader__inner {
+  position: relative;
+  width: min(420px, 100% - 3rem);
+  transition: opacity 0.35s, transform 0.5s var(--ease);
+}
+
+.loader.is-leaving .loader__inner { opacity: 0; transform: translateY(-30px); }
+
+.loader__name {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.loader__name span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: up 0.8s var(--ease) forwards;
+}
+
+.loader__name span + span { animation-delay: 0.12s; }
+
+.loader__role {
+  margin: 0.6rem 0 2.25rem;
+  font-weight: 600;
+  color: var(--blue-bright);
+  opacity: 0;
+  animation: up 0.8s var(--ease) 0.25s forwards;
+}
+
+.loader__bar {
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.loader__bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue), var(--blue-bright));
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.loader__count {
+  margin: 0.75rem 0 0;
+  text-align: right;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Header-animaties wachten tot het laadscherm weg is */
+.is-loading .anim-up,
+.is-loading .anim-photo { animation-play-state: paused !important; }
+
+/* =========================================================
    ANIMATIES
    Alleen actief als JavaScript draait (html.js) en de
    bezoeker geen "minder beweging" heeft ingesteld.

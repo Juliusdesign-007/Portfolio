@@ -15,6 +15,53 @@ if (ageEl) {
 }
 
 // ---------------------------------------------------------
+// Laadscherm: teller 0 → 100, dan omhoog wegschuiven
+// ---------------------------------------------------------
+(() => {
+  const root = document.documentElement;
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  if (!root.classList.contains('is-loading')) { loader.remove(); return; }
+
+  const bar = document.getElementById('loader-bar');
+  const count = document.getElementById('loader-count');
+  const MIN = 1500; // minimaal zo lang zichtbaar (ms)
+  const MAX = 3500; // en nooit langer dan dit
+  const start = performance.now();
+  let pageLoaded = document.readyState === 'complete';
+  window.addEventListener('load', () => { pageLoaded = true; });
+
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+  function tick(now) {
+    const elapsed = now - start;
+    // loopt in MIN ms naar 100%, maar blijft op 90% hangen tot de pagina echt geladen is
+    let t = ease(Math.min(elapsed / MIN, 1));
+    if (!pageLoaded && elapsed < MAX) t = Math.min(t, 0.9);
+    const pct = Math.round(t * 100);
+    bar.style.transform = `scaleX(${t})`;
+    count.textContent = pct;
+
+    if (pct >= 100 && elapsed >= MIN) { finish(); return; }
+    requestAnimationFrame(tick);
+  }
+
+  function finish() {
+    setTimeout(() => {
+      loader.classList.add('is-leaving');
+      root.classList.remove('is-loading'); // header-animaties starten
+      try { sessionStorage.setItem('ja-loaded', '1'); } catch (e) {}
+      loader.addEventListener('transitionend', (e) => {
+        if (e.target === loader && e.propertyName === 'transform') loader.remove();
+      });
+      setTimeout(() => loader.remove(), 1500);
+    }, 200);
+  }
+
+  requestAnimationFrame(tick);
+})();
+
+// ---------------------------------------------------------
 // Menu: groot bovenaan, kleiner zwevend balkje bij scrollen
 // ---------------------------------------------------------
 const nav = document.getElementById('nav');
