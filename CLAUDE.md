@@ -27,7 +27,7 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 - Font: Plus Jakarta Sans (Google Fonts), heel vet (800) voor grote titels. Kleine blauwe `.eyebrow` boven titels.
 - Knoppen: pil met rond pijltje (`.btn` + `.btn__icon`, varianten `--light`, `--blue`, `--ghost`).
 - Menu (`#nav`): groot bovenin, wordt bij scrollen een kleiner zwevend balkje (`.nav--small`, gezet in main.js). Op mobiel toont de Contact-knop alleen het pijltje. Menu-items hebben allemaal dezelfde stijl (ook de huidige pagina, geen onderstreping); bij hover worden ze blauw.
-- Ervaring: lijst met grote jaartallen + label (Werk/Stage/Opleiding), class `.xp`. NIET als CV-tijdlijn.
+- Ervaring: lijst met grote jaartallen + label (Werk/Stage/Opleiding, allemaal dezelfde neutrale stijl), class `.xp`. NIET als CV-tijdlijn.
 - Animaties: openingsanimatie header (`.anim-up` / `.anim-photo` met `--d` vertraging in ms), scroll-animaties via `data-reveal` (+ optioneel `style="--d:100"`), lichte parallax op headerfoto (`data-parallax`). Alles uit bij 'prefers-reduced-motion'.
 - Bewegende achtergrond (rustig): `body::before/::after` = zachte blauwe gloed die langzaam over de pagina drijft (38-46 s); `.hero/.page-head/.contact::before` = lichtvlek die langzaam door de blauwe headers schuift (24 s). Julius wil het rustig houden: niet sneller of feller maken zonder dat hij erom vraagt.
 - Laadscherm (`#loader`, op alle 3 pagina's direct na `<body>`): naam + 'Mediavormgever' + blauwe balk 0→100%, minimaal 1,5 s, max 3,5 s, schuift dan omhoog weg en pas dan start de header-animatie. Alleen bij het eerste bezoek per sessie (`sessionStorage 'ja-loaded'`), niet bij elke paginawissel; overgeslagen bij 'minder beweging'. Logica bovenaan `main.js` + inline script in `<head>`.

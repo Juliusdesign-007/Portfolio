@@ -367,7 +367,6 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   padding: 0.25rem 0.85rem;
 }
 
-.xp__type--hl { background: var(--blue); border-color: var(--blue); color: #fff; }
 
 /* =========================================================
    CONTACT
