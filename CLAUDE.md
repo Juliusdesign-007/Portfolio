@@ -33,7 +33,7 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 
 ## Projecten toevoegen
 De projectenpagina is een 3D-stapel (Julius' wens, naar een voorbeeld): je scrollt erdoorheen, het middelste vak staat recht,
-de rest kantelt weg. Klik op het middelste vak opent een detailvenster (`<dialog id="detail">`); klik op een ander vak scrollt ernaartoe.
+de rest kantelt weg. Eén scroll (muiswiel/trackpad) of één veeg op mobiel = precies één vak verder, met een eigen soepele animatie (700 ms, `DURATION` in projecten.js); bij het eerste/laatste vak scrolt de pagina gewoon verder. Klik op het middelste vak opent een detailvenster (`<dialog id="detail">`); klik op een ander vak scrollt ernaartoe.
 Er staan 10 vakken met witte placeholders ("Project 01" t/m "Project 10") tot Julius werk levert.
 
 Een project invullen = één `<li class="stack__item">` in `projecten.html` aanpassen:

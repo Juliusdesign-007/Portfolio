@@ -19,6 +19,7 @@
   const elCount = document.getElementById('sc-count');
   const elBar = document.getElementById('sc-bar');
 
+  const dialog = document.getElementById('detail');
   const pad = (i) => String(i + 1).padStart(2, '0');
   let active = -1;
   let progress = 0;
@@ -90,25 +91,113 @@
     });
   }
 
-  // Naar een bepaald vak scrollen
-  function goTo(idx) {
-    idx = Math.max(0, Math.min(n - 1, idx));
+  // ---------------------------------------------------------
+  // Naar een bepaald vak scrollen, met een eigen soepele animatie
+  // ---------------------------------------------------------
+  const DURATION = 700; // ms per stap
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 'instant' omdat de site standaard 'smooth' scrollt; wij animeren zelf
+  const jump = (y) => window.scrollTo({ top: y, behavior: 'instant' });
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  let animating = false;
+  let animEnd = 0;
+  let rafId;
+
+  function topFor(idx) {
     const range = section.offsetHeight - window.innerHeight;
-    const top = section.offsetTop + (idx / (n - 1)) * range;
-    window.scrollTo({ top, behavior: 'smooth' });
+    return section.offsetTop + (idx / (n - 1)) * range;
   }
 
-  // Na het scrollen netjes op het dichtstbijzijnde vak laten vallen
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(n - 1, idx));
+    const from = window.scrollY;
+    const to = topFor(idx);
+    if (reduceMotion || Math.abs(to - from) < 2) { jump(to); return; }
+
+    cancelAnimationFrame(rafId);
+    animating = true;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / DURATION, 1);
+      jump(from + (to - from) * ease(t));
+      if (t < 1) rafId = requestAnimationFrame(step);
+      else { animating = false; animEnd = performance.now(); }
+    };
+    rafId = requestAnimationFrame(step);
+  }
+
+  // Staat de stapel nu vast in beeld?
+  function pinned() {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= 2 && rect.bottom >= window.innerHeight - 2;
+  }
+
+  // ---------------------------------------------------------
+  // Eén scroll (muiswiel of trackpad) = één vak verder
+  // ---------------------------------------------------------
+  let lastWheel = 0;
+
+  window.addEventListener('wheel', (e) => {
+    if (dialog.open || !pinned()) return;
+    const dir = Math.sign(e.deltaY);
+    if (!dir) return;
+
+    // Bij het eerste vak omhoog of laatste vak omlaag: gewoon de pagina laten scrollen
+    const cur = Math.round(readProgress());
+    if ((dir < 0 && cur === 0) || (dir > 0 && cur === n - 1)) {
+      if (!animating) return;
+    }
+
+    e.preventDefault();
+    const now = performance.now();
+    const gap = now - lastWheel;
+    lastWheel = now;
+
+    // Tijdens een animatie, of als het trackpad nog 'naveert', niets doen
+    if (animating) return;
+    if (gap < 180 && now - animEnd < 600) return;
+
+    goTo(cur + dir);
+  }, { passive: false });
+
+  // ---------------------------------------------------------
+  // Telefoon: één veeg = één vak verder
+  // ---------------------------------------------------------
+  let touchY = null;
+
+  section.addEventListener('touchstart', (e) => {
+    touchY = pinned() ? e.touches[0].clientY : null;
+  }, { passive: true });
+
+  section.addEventListener('touchmove', (e) => {
+    if (touchY === null || dialog.open) return;
+    const dy = touchY - e.touches[0].clientY;
+    const cur = Math.round(readProgress());
+    const dir = Math.sign(dy);
+    const atEdge = (dir < 0 && cur === 0) || (dir > 0 && cur === n - 1);
+    if (!atEdge) e.preventDefault();
+  }, { passive: false });
+
+  section.addEventListener('touchend', (e) => {
+    if (touchY === null || dialog.open) return;
+    const dy = touchY - e.changedTouches[0].clientY;
+    touchY = null;
+    if (Math.abs(dy) < 30 || animating) return;
+    const cur = Math.round(readProgress());
+    const dir = Math.sign(dy);
+    if ((dir < 0 && cur === 0) || (dir > 0 && cur === n - 1)) return;
+    goTo(cur + dir);
+  });
+
+  // Na gewoon scrollen (bijv. scrollbalk slepen) netjes op het dichtstbijzijnde vak laten vallen
   let snapTimer;
   function snap() {
     clearTimeout(snapTimer);
     snapTimer = setTimeout(() => {
-      const rect = section.getBoundingClientRect();
-      const inside = rect.top < 0 && rect.bottom > window.innerHeight;
-      if (!inside) return;
+      if (animating || !pinned()) return;
       const p = readProgress();
       if (Math.abs(p - Math.round(p)) > 0.04) goTo(Math.round(p));
-    }, 160);
+    }, 200);
   }
 
   let ticking = false;
@@ -122,7 +211,6 @@
   window.addEventListener('resize', layout);
 
   // Klikken
-  const dialog = document.getElementById('detail');
 
   items.forEach((item, i) => {
     item.querySelector('.card').addEventListener('click', () => {
@@ -149,8 +237,7 @@
   // Toetsenbord: pijltjes op/neer bladeren als de stapel in beeld is
   window.addEventListener('keydown', (e) => {
     if (dialog.open) return;
-    const rect = section.getBoundingClientRect();
-    if (!(rect.top <= 1 && rect.bottom >= window.innerHeight - 1)) return;
+    if (!pinned() || animating) return;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); goTo(active + 1); }
     if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goTo(active - 1); }
   });
