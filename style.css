@@ -292,43 +292,6 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
   color: var(--blue-bright);
 }
 
-/* Strook onder de header */
-.brands {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem clamp(2rem, 5vw, 4.5rem);
-  padding: 2.25rem clamp(1.25rem, 4vw, 3.5rem);
-}
-
-.brands__label {
-  margin: 0;
-  max-width: 11rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--soft);
-}
-
-.brands ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem clamp(2rem, 5vw, 4.5rem);
-}
-
-.brands li {
-  font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.55);
-  transition: color 0.3s;
-}
-
-.brands li:hover { color: #fff; }
-
 /* =========================================================
    SECTIES
    ========================================================= */
