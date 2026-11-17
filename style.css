@@ -1,0 +1,414 @@
+/* =========================================================
+   Portfolio Julius Akyol
+   Stijl afgeleid van zijn CV: donker navy, elektrisch blauw,
+   schuine verloop-banden en tabbladen met een schuine punt.
+   ========================================================= */
+
+:root {
+  --navy: #10131f;
+  --navy-2: #1a2033;
+  --blue-deep: #0a3a73;
+  --blue: #0c7fd9;
+  --blue-bright: #35a8ff;
+  --ink: #1c2130;
+  --muted: #5a6276;
+  --paper: #ffffff;
+  --tint: #f2f5fa;
+  --line: #dde3ee;
+
+  --band: linear-gradient(100deg, var(--navy-2) 0%, var(--blue-deep) 28%, var(--blue) 55%, var(--blue-bright) 68%, var(--blue-deep) 85%, var(--navy) 100%);
+
+  --wrap: 1120px;
+  --font: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--blue); }
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--blue-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+
+.wrap {
+  width: min(var(--wrap), 100% - 3rem);
+  margin-inline: auto;
+}
+
+/* ---------- Navigatie ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem max(1.5rem, (100% - var(--wrap)) / 2);
+  background: rgba(16, 19, 31, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav__logo {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.nav__links {
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__links a {
+  color: #c9d3e6;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.nav__links a:hover { color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+  padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(5rem, 10vw, 8.5rem);
+}
+
+/* De schuine blauwe band uit de kop van het CV */
+.hero__band {
+  position: absolute;
+  inset: 0;
+  background: var(--band);
+  clip-path: polygon(0 0, 100% 0, 100% 46%, 0 92%);
+  opacity: 0.95;
+}
+
+.hero__inner {
+  position: relative;
+  width: min(var(--wrap), 100% - 3rem);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero__name {
+  font-weight: 800;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.hero__role {
+  margin: 1rem 0 0;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: #fff;
+}
+
+.hero__intro {
+  max-width: 34ch;
+  margin: 1.25rem 0 2rem;
+  color: #d6e2f5;
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+.hero__photo {
+  justify-self: center;
+  width: min(380px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--navy);
+  box-shadow: 0 0 0 3px var(--blue-bright), 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Knoppen ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn--primary { background: #fff; color: var(--navy); }
+.btn--primary:hover { background: var(--blue-bright); color: #fff; }
+
+.btn--ghost { color: #fff; border: 2px solid rgba(255, 255, 255, 0.6); }
+.btn--ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
+
+/* ---------- Secties ---------- */
+.section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
+.section--tint { background: var(--tint); }
+
+/* Kopje als tabblad met schuine punt, zoals de zijbalk van het CV */
+.tab {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.45rem 2.6rem 0.45rem 1.1rem;
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: #fff;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue) 70%, var(--blue-bright));
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%);
+}
+
+.lead {
+  margin-top: 0;
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--navy);
+}
+
+/* ---------- Over mij ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.about__main { max-width: 64ch; }
+
+.about__side {
+  background: var(--navy);
+  color: #d6e0f0;
+  padding: 2rem;
+  border-radius: 6px;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.fact h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, var(--blue-bright), var(--blue-deep) 70%, transparent) 1;
+}
+
+.fact ul { margin: 0; padding: 0; list-style: none; }
+.fact li { font-size: 1rem; padding: 0.15rem 0; }
+
+/* ---------- Projecten ---------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.projects__empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+.project {
+  background: var(--paper);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.project__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.project__body { padding: 1.4rem 1.5rem 1.6rem; }
+.project__body h3 { font-size: 1.25rem; font-weight: 600; color: var(--navy); }
+.project__meta { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; color: var(--blue); font-weight: 400; }
+.project__body p:last-child { margin-bottom: 0; font-size: 1rem; }
+
+/* ---------- Ervaring / tijdlijn ---------- */
+.columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 2rem 2.4rem;
+}
+
+/* verticale lijn */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 10px;
+  bottom: -10px;
+  width: 2px;
+  background: var(--navy-2);
+}
+
+.timeline li:last-child::before { bottom: 1.5rem; }
+
+/* blauwe bol, zoals in het CV */
+.timeline li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--blue-bright), var(--blue) 45%, var(--navy) 100%);
+}
+
+.timeline__date {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.timeline h3 {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.timeline li p:last-child { margin: 0; font-size: 1rem; color: var(--muted); }
+
+/* ---------- Contact ---------- */
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--band);
+  clip-path: polygon(0 70%, 100% 25%, 100% 100%, 0 100%);
+  opacity: 0.9;
+}
+
+.contact .wrap { position: relative; }
+
+.contact__title {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.025em;
+}
+
+.contact__text { max-width: 46ch; color: #d6e2f5; margin: 1rem 0 2.5rem; }
+
+.contact__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact__list a {
+  display: block;
+  min-width: 230px;
+  padding: 1rem 1.3rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  background: rgba(16, 19, 31, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.contact__list a:hover { border-color: var(--blue-bright); background: rgba(16, 19, 31, 0.95); }
+
+.contact__list span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--blue-bright);
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--navy);
+  color: #8c97ad;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1.5rem;
+  border-top: 4px solid;
+  border-image: var(--band) 1;
+}
+
+.footer p { margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__photo { order: -1; justify-self: start; width: 180px; }
+  .hero__band { clip-path: polygon(0 0, 100% 0, 100% 22%, 0 40%); }
+  .about,
+  .columns { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1.05rem; }
+  .nav__links { gap: 1rem; }
+  .nav__links li:nth-child(n+3) { display: none; }
+  .nav__logo { font-size: 1rem; }
+  .contact__list a { min-width: 0; width: 100%; }
+  .contact__list li { flex: 1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
