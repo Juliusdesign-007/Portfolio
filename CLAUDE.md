@@ -23,7 +23,7 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 ## Stijl (sinds 17-11-2026: donkere 'portfolio-vibe', op basis van een voorbeeld dat Julius stuurde)
 - Donkere achtergrond `--bg #0d0e12`, vlakken `--surface`. Accent: elektrisch blauw uit zijn CV (niet oranje zoals het voorbeeld).
 - Grote afgeronde headers (`.hero` op de homepage, `.page-head` op subpagina's, radius 40px) met blauw verloop `--hero-grad`.
-- Foto in de header: `img/julius-cut.webp` = zwart-wit uitsnede zonder achtergrond, krijgt kleur via `mix-blend-mode: luminosity`.
+- Foto in de header: `img/julius-shadow.webp` = uitsnede zonder achtergrond, bewerkt tot donker silhouet met blauw randlicht links (Julius wil een zwarte schaduw, géén blauw gezicht). Geen blend-mode erop.
 - Font: Plus Jakarta Sans (Google Fonts), heel vet (800) voor grote titels. Kleine blauwe `.eyebrow` boven titels.
 - Knoppen: pil met rond pijltje (`.btn` + `.btn__icon`, varianten `--light`, `--blue`, `--ghost`).
 - Menu (`#nav`): groot bovenin, wordt bij scrollen een kleiner zwevend balkje (`.nav--small`, gezet in main.js). Op mobiel toont de Contact-knop alleen het pijltje. Menu-items hebben allemaal dezelfde stijl (ook de huidige pagina, geen onderstreping); bij hover worden ze blauw.
