@@ -96,6 +96,11 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
 }
 
 .nav__links a:hover { color: #fff; }
+.nav__links a[aria-current="page"] {
+  color: #fff;
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 var(--blue-bright);
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -175,6 +180,9 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
 .btn--ghost { color: #fff; border: 2px solid rgba(255, 255, 255, 0.6); }
 .btn--ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
 
+.btn--dark { background: var(--navy); color: #fff; margin-top: 0.75rem; }
+.btn--dark:hover { background: var(--blue); }
+
 /* ---------- Secties ---------- */
 .section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
 .section--tint { background: var(--tint); }
@@ -218,6 +226,7 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
   gap: 1.75rem;
 }
 
+.fact h2,
 .fact h3 {
   font-size: 1.05rem;
   font-weight: 600;
@@ -240,10 +249,15 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
 
 .projects__empty {
   grid-column: 1 / -1;
-  margin: 0;
   max-width: 60ch;
-  color: var(--muted);
+  padding: 2.5rem;
+  background: var(--tint);
+  border-left: 6px solid var(--blue);
+  border-radius: 4px;
 }
+
+.projects__empty h2 { font-size: 1.6rem; font-weight: 600; color: var(--navy); }
+.projects__empty p { color: var(--muted); }
 
 .project {
   background: var(--paper);
@@ -254,69 +268,155 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
 
 .project__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .project__body { padding: 1.4rem 1.5rem 1.6rem; }
+.project__body h2,
 .project__body h3 { font-size: 1.25rem; font-weight: 600; color: var(--navy); }
 .project__meta { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; color: var(--blue); font-weight: 400; }
 .project__body p:last-child { margin-bottom: 0; font-size: 1rem; }
 
-/* ---------- Ervaring / tijdlijn ---------- */
-.columns {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(2rem, 6vw, 5rem);
+/* ---------- Homepage: intro + wat ik doe ---------- */
+.intro {
+  max-width: 62ch;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
-.timeline {
+.intro__title {
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.link-more {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue-bright);
+  padding-bottom: 2px;
+}
+
+.link-more:hover { color: var(--navy); border-color: var(--navy); }
+
+.skills {
   list-style: none;
   margin: 0;
   padding: 0;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.timeline li {
-  position: relative;
-  padding: 0 0 2rem 2.4rem;
+.skill {
+  padding-top: 1.25rem;
+  border-top: 4px solid;
+  border-image: linear-gradient(90deg, var(--blue-deep), var(--blue) 50%, var(--blue-bright)) 1;
 }
 
-/* verticale lijn */
-.timeline li::before {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 10px;
-  bottom: -10px;
-  width: 2px;
-  background: var(--navy-2);
-}
-
-.timeline li:last-child::before { bottom: 1.5rem; }
-
-/* blauwe bol, zoals in het CV */
-.timeline li::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, var(--blue-bright), var(--blue) 45%, var(--navy) 100%);
-}
-
-.timeline__date {
-  margin: 0;
-  font-size: 0.95rem;
+.skill h3 {
+  font-size: 1.3rem;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--navy);
+  margin-bottom: 0.5rem;
 }
 
-.timeline h3 {
-  margin: 0.15rem 0 0.35rem;
-  font-size: 1.2rem;
+.skill p { margin: 0; font-size: 1rem; color: var(--muted); }
+
+/* ---------- Ervaring (lijst met jaartallen) ---------- */
+.xp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.xp__item {
+  display: grid;
+  grid-template-columns: 11rem 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.6rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.xp__years {
+  margin: 0;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.xp__body h3 {
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--navy);
 }
 
-.timeline li p:last-child { margin: 0; font-size: 1rem; color: var(--muted); }
+.xp__place {
+  margin: 0.1rem 0 0.4rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.xp__body p:last-child { margin-bottom: 0; }
+.xp__body p:not(.xp__place) { margin: 0; font-size: 1rem; color: var(--muted); }
+
+.xp__type {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+}
+
+.xp__type--hl { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* ---------- Paginakop (Over mij / Projecten) ---------- */
+.page-head {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem);
+}
+
+.page-head__band {
+  position: absolute;
+  inset: 0;
+  background: var(--band);
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 85%);
+  opacity: 0.95;
+}
+
+.page-head__inner { position: relative; }
+
+.page-head h1 {
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  letter-spacing: -0.035em;
+}
+
+.page-head p {
+  max-width: 48ch;
+  margin: 1rem 0 0;
+  font-size: 1.25rem;
+  color: #d6e2f5;
+}
+
+.about__photo {
+  width: 160px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--blue-bright);
+}
 
 /* ---------- Contact ---------- */
 .contact {
@@ -395,14 +495,18 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
   .hero__inner { grid-template-columns: 1fr; }
   .hero__photo { order: -1; justify-self: start; width: 180px; }
   .hero__band { clip-path: polygon(0 0, 100% 0, 100% 22%, 0 40%); }
-  .about,
-  .columns { grid-template-columns: 1fr; }
+  .about { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr; }
+  .xp__item { grid-template-columns: 1fr auto; gap: 0.25rem 1rem; }
+  .xp__years { font-size: 1.1rem; }
+  .xp__body { grid-column: 1 / -1; grid-row: 2; }
 }
 
 @media (max-width: 600px) {
   body { font-size: 1.05rem; }
-  .nav__links { gap: 1rem; }
-  .nav__links li:nth-child(n+3) { display: none; }
+  .nav { flex-wrap: wrap; row-gap: 0.4rem; padding-block: 0.7rem; }
+  .nav__links { gap: 1.1rem; }
+  .nav__links a { font-size: 0.95rem; }
   .nav__logo { font-size: 1rem; }
   .contact__list a { min-width: 0; width: 100%; }
   .contact__list li { flex: 1 1 100%; }

@@ -4,26 +4,32 @@ Dit is de portfoliowebsite van Julius Akyol (mediavormgever, MBO Media Vormgevin
 Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg dingen in gewone taal uit, in het Nederlands.
 
 ## Hoe het werkt
-- Statische site, geen build-stap: `index.html` + `style.css` + `img/`.
+- Statische site, geen build-stap: 3 pagina's + `style.css` + `main.js` + `img/`.
 - Hosting: Netlify, gekoppeld aan de `main`-branch van deze repo. Elke push naar `main` staat binnen ~1 minuut live.
 - Wijzigingen dus direct op `main` committen en pushen (tenzij Julius iets anders vraagt).
 
 ## Structuur
-- `index.html` – alle content, per sectie gemarkeerd met `<!-- ==== NAAM ==== -->`:
-  navigatie, hero, over mij, projecten, ervaring (werk & stage + opleiding), contact, footer.
+- `index.html` – homepage: hero, 'wat ik doe' (intro + 3 vaardigheden), ervaring (#ervaring), contact (#contact).
+- `over-mij.html` – aparte pagina Over mij (tekst, foto, vaardigheden/talen/buiten school).
+- `projecten.html` – aparte pagina Projecten.
+- Navigatie staat in elk HTML-bestand apart: wijzig je het menu, doe het dan in alle drie.
+  Menu: Over mij (pagina) · Projecten (pagina) · Ervaring (homepage #ervaring) · Contact (homepage #contact).
+- `main.js` – jaartal footer + leeftijd (berekend uit geboortedatum, alleen leeftijd tonen).
+- Secties zijn gemarkeerd met `<!-- ==== NAAM ==== -->`.
 - `style.css` – kleuren en fonts als CSS-variabelen bovenaan (`:root`).
 - `img/julius.jpg` – profielfoto (uit zijn CV). `img/favicon.svg` – icoon.
 - `img/projecten/` – hier komen projectafbeeldingen.
 
 ## Stijl (afgeleid van zijn CV)
 - Donker navy `#10131f` + elektrisch blauw verloop (`--band`), schuine banden zoals de CV-kop.
-- Sectiekoppen als blauw tabblad met schuine punt (`.tab`), tijdlijn met blauwe bollen.
+- Sectiekoppen als blauw tabblad met schuine punt (`.tab`); subpagina's hebben een `.page-head` met schuine band.
+- Ervaring is bewust NIET als CV-tijdlijn vormgegeven (Julius' wens): lijst met grote jaartallen + label (Werk/Stage/Opleiding), class `.xp`.
 - Font: Outfit (Google Fonts). Strak en rustig houden: Julius wil het strak.
 
 ## Projecten toevoegen
-In `index.html` onder PROJECTEN staat een uitgecommentarieerd sjabloon (`<article class="project">`).
+In `projecten.html` onder PROJECTEN staat een uitgecommentarieerd sjabloon (`<article class="project">`).
 Kopieer het, vul titel/context/tekst in, zet afbeelding in `img/projecten/` (max ~1600px breed, jpg/webp, comprimeren).
-Verwijder de `projects__empty`-paragraaf zodra er een echt project staat.
+Verwijder het `projects__empty`-blok zodra er een echt project staat.
 
 ## Privacy
 Zet GEEN thuisadres, telefoonnummer of geboortedatum zichtbaar op de site (staat wel in zijn CV).
