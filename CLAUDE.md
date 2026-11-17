@@ -11,7 +11,7 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 ## Structuur
 - `index.html` – homepage: hero, 'wat ik doe' (intro + 3 vaardigheden), ervaring (#ervaring), contact (#contact).
 - `over-mij.html` – aparte pagina Over mij (tekst, foto, vaardigheden/talen/buiten school).
-- `projecten.html` – aparte pagina Projecten.
+- `projecten.html` – aparte pagina Projecten: header + 3D-stapel van 10 vakken (scrollen om te bladeren, klik = detailvenster). Logica in `projecten.js`.
 - Navigatie staat in elk HTML-bestand apart: wijzig je het menu, doe het dan in alle drie.
   Menu: Over mij (pagina) · Projecten (pagina) · Ervaring (homepage #ervaring) · Contact (homepage #contact).
 - `main.js` – jaartal footer + leeftijd (berekend uit geboortedatum, alleen leeftijd tonen).
@@ -32,9 +32,16 @@ Julius vraagt wijzigingen aan via Claude-chat. Hij is geen programmeur: leg ding
 - Nieuwe content? Geef het `data-reveal` zodat het meedoet met de animaties.
 
 ## Projecten toevoegen
-In `projecten.html` onder PROJECTEN staat een uitgecommentarieerd sjabloon (`<article class="project">`).
-Kopieer het, vul titel/context/tekst in, zet afbeelding in `img/projecten/` (max ~1600px breed, jpg/webp, comprimeren).
-Verwijder het `projects__empty`-blok zodra er een echt project staat.
+De projectenpagina is een 3D-stapel (Julius' wens, naar een voorbeeld): je scrollt erdoorheen, het middelste vak staat recht,
+de rest kantelt weg. Klik op het middelste vak opent een detailvenster (`<dialog id="detail">`); klik op een ander vak scrollt ernaartoe.
+Er staan 10 vakken met witte placeholders ("Project 01" t/m "Project 10") tot Julius werk levert.
+
+Een project invullen = één `<li class="stack__item">` in `projecten.html` aanpassen:
+- `data-title` (groot links in beeld), `data-meta` (bijv. "Stepp Footcare · 2025"), `data-text` (2-3 zinnen voor het detailvenster)
+- `<span class="card__ph">…</span>` vervangen door `<img src="img/projecten/NAAM.jpg" alt="…" loading="lazy">`
+- Beeld liggend 16:10, ca. 1600px breed, gecomprimeerd (jpg/webp) in `img/projecten/`.
+Meer/minder vakken: `<li>` kopiëren of verwijderen; JS en scrollhoogte passen zich aan.
+Controleer na wijzigingen ook het detailvenster en mobiel (de titel staat daar onderin over een donkere fade).
 
 ## Privacy
 Zet GEEN thuisadres, telefoonnummer of geboortedatum zichtbaar op de site (staat wel in zijn CV).

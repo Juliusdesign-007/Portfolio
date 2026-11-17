@@ -34,38 +34,133 @@
       <div class="page-head__inner">
         <p class="eyebrow anim-up" style="--d:100">Mijn werk</p>
         <h1 class="anim-up" style="--d:200">Projecten</h1>
-        <p class="anim-up" style="--d:380">Een selectie van wat ik heb ontworpen, op school, tijdens mijn stage en voor mezelf.</p>
+        <p class="anim-up" style="--d:380">Een selectie van wat ik heb ontworpen, op school, tijdens mijn stage en voor mezelf. Scroll erdoorheen en klik op een project om het te bekijken.</p>
       </div>
     </section>
 
-    <!-- ============ PROJECTEN ============ -->
-    <section class="section">
-      <div class="wrap">
-        <div class="projects">
-          <!--
-            PROJECT TOEVOEGEN: kopieer dit blok, haal de commentaartekens weg en vul in.
-            Zet de afbeelding in img/projecten/ (liefst .jpg of .webp, ca. 1600px breed, staand 4:5 werkt het mooist).
-            Geef elk volgend project een oplopende vertraging: style="--d:0", "--d:100", "--d:200" …
-            Verwijder het 'projects__empty' blok zodra er een echt project staat.
+    <!-- ============ PROJECTEN (3D-stapel, scrollen om te bladeren) ============ -->
+    <!--
+      PROJECT INVULLEN: pas één van de 10 knoppen hieronder aan.
+        data-title = titel van het project (groot links in beeld)
+        data-meta  = korte context, bijv. "Stepp Footcare · 2025"
+        data-text  = 2-3 zinnen uitleg, verschijnt na klikken
+      Vervang <span class="card__ph">…</span> door:
+        <img src="img/projecten/NAAM.jpg" alt="Korte beschrijving" loading="lazy">
+      Beeld liefst liggend (16:10), ca. 1600px breed.
+      Meer of minder vakken? Kopieer of verwijder een <li class="stack__item">: de rest past zich aan.
+    -->
+    <section class="showcase" id="werk" aria-label="Projecten">
+      <div class="showcase__sticky">
 
-          <article class="project" data-reveal style="--d:0">
-            <img class="project__img" src="img/projecten/NAAM.jpg" alt="Korte beschrijving van het beeld" loading="lazy">
-            <div class="project__body">
-              <h2>Projecttitel</h2>
-              <p class="project__meta">Opdrachtgever of context, jaar</p>
-              <p>Twee à drie zinnen: wat was de vraag, wat heb je gemaakt, wat was jouw rol.</p>
-            </div>
-          </article>
-          -->
+        <div class="showcase__info" aria-live="polite">
+          <p class="showcase__num" id="sc-num">01</p>
+          <h2 class="showcase__title" id="sc-title">Binnenkort</h2>
+          <p class="showcase__meta" id="sc-meta">Project 01</p>
+        </div>
 
-          <div class="projects__empty" data-reveal>
-            <h2>Hier komt binnenkort mijn werk te staan.</h2>
-            <p>Ik ben mijn projecten aan het verzamelen. Wil je nu al iets zien? Mail me, dan stuur ik je een paar voorbeelden.</p>
-            <a class="btn btn--blue" href="mailto:julius.akyol@gmail.com">Mail mij <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-          </div>
+        <ol class="stack" id="stack">
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 01"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 01</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 02"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 02</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 03"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 03</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 04"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 04</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 05"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 05</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 06"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 06</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 07"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 07</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 08"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 08</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 09"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 09</span>
+            </button>
+          </li>
+          <li class="stack__item">
+            <button class="card" type="button"
+              data-title="Binnenkort"
+              data-meta="Project 10"
+              data-text="Hier komt binnenkort een van mijn projecten te staan.">
+              <span class="card__ph">Project 10</span>
+            </button>
+          </li>
+        </ol>
+
+        <div class="showcase__side" aria-hidden="true">
+          <span id="sc-count">01 / 10</span>
+          <div class="showcase__bar"><i id="sc-bar"></i></div>
+          <span>Scroll om te bladeren</span>
         </div>
       </div>
     </section>
+
+    <!-- Detailvenster dat opent als je op het middelste vak klikt -->
+    <dialog class="detail" id="detail" aria-labelledby="detail-title">
+      <button class="detail__close" type="button" aria-label="Sluiten" data-close>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l10 10M13 3 3 13"/></svg>
+      </button>
+      <div class="detail__media" id="detail-media"></div>
+      <div class="detail__body">
+        <p class="eyebrow" id="detail-meta"></p>
+        <h2 id="detail-title"></h2>
+        <p id="detail-text"></p>
+      </div>
+    </dialog>
   </main>
 
   <footer class="footer">
@@ -73,5 +168,6 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="projecten.js"></script>
 </body>
 </html>
